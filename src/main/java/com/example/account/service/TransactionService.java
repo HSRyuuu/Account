@@ -9,6 +9,7 @@ import com.example.account.repository.AccountRepository;
 import com.example.account.repository.AccountUserRepository;
 import com.example.account.repository.TransactionRepository;
 import com.example.account.type.AccountStatus;
+import com.example.account.type.ErrorCode;
 import com.example.account.type.TransactionResultType;
 import com.example.account.type.TransactionType;
 import lombok.RequiredArgsConstructor;
@@ -122,5 +123,12 @@ public class TransactionService {
                 .orElseThrow(() -> new AccountException(ACCOUNT_NOT_FOUND));
 
         saveAndGetTransaction(CANCEL, F, account, amount);
+    }
+
+    public TransactionDto queryTransaction(String transactionId) {
+        return TransactionDto.fromEntity(
+                transactionRepository.findByTransactionId(transactionId)
+                        .orElseThrow(() -> new AccountException(ErrorCode.TRANSACTION_NOT_FOUND))
+        );
     }
 }

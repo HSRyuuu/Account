@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
   "userId": 1,
-  "initialBalance": 1234500
+  "initialBalance": -1234500
 }
 
 ### delete account

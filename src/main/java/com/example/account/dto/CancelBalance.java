@@ -14,7 +14,6 @@ public class CancelBalance {
     @NoArgsConstructor
     public static class Request{
         @NotNull
-        @Min(1)
         private String transactionId;
 
         @NotBlank
