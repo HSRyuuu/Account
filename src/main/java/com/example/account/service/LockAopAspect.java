@@ -20,9 +20,9 @@ public class LockAopAspect {
                                AccountLockIdInterface request) throws Throwable {
         //lock 취득 시도
         lockService.lock(request.getAccountNumber());
-        try{
+        try {
             return pjp.proceed();
-        }finally {
+        } finally {
             // lock 해제
             lockService.unlock(request.getAccountNumber());
         }
